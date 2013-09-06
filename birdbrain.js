@@ -13,7 +13,7 @@ birdBrain	= {
 	ABDX: { name: "American Black Duck Dominant x Mallard Hybrid" },
 	ABTO: { name: "Abert's Towhee" },
 	ACFL: { name: "Acadian Flycatcher" },
-	ACGO: { name: "Aleutian Canada Goose" },
+	ACGO: { name: "Aleutian Cackling Goose" },
 	ACHU: { name: "Antillean Crested Hummingbird" },
 	ACWO: { name: "Acorn Woodpecker" },
 	ADPE: { name: "Adélie Penguin" },
