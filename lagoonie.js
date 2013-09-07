@@ -2,6 +2,15 @@
 window.onload = function() {
 
 	var submitButton	= document.getElementById( "lagoonie-process" );
+	var resetButton		= document.getElementById( "lagoonie-reset" );
+	
+	window.resetList	= function() {
+	
+		var textarea	= document.getElementById( "lagoonie-textarea" );
+		
+		textarea.value = "";
+	
+	}
 
 	window.processList	= function() {
 	
@@ -11,7 +20,7 @@ window.onload = function() {
 			result		= "",
 			resultHTML	= document.getElementById( "lagoonie-result" );
 		
-		result = "<p>REPORT FOR: "+ lines[0] +"<br />"+ lines.length +" species observed.</p>"+
+		result = "<p>REPORT FOR: "+ lines[0] +"<br />"+ (lines.length-1) +" species observed.</p>"+
 					"<table><tr><th>Species Name</th><th>Number Seen</th><th>Female</th><th>Male</th><th>Imm.</th><th>Juv.</th></tr>";
 					
 		for( var i = 1; i < lines.length; i++ ) {
@@ -113,6 +122,9 @@ window.onload = function() {
 
 	submitButton.addEventListener( 'touchend', window.processList );
 	submitButton.addEventListener( 'click', window.processList );
+	
+	resetButton.addEventListener( 'touchend', window.resetList );
+	resetButton.addEventListener( 'click', window.resetList );
 
 
 }
