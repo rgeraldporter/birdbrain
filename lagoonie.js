@@ -21,7 +21,7 @@ window.onload = function() {
 			resultHTML	= document.getElementById( "lagoonie-result" );
 		
 		result = "<p>REPORT FOR: "+ lines[0] +"<br />"+ (lines.length-1) +" species observed.</p>"+
-					"<table><tr><th>Species Name</th><th>Number Seen</th><th>Female</th><th>Male</th><th>Imm.</th><th>Juv.</th></tr>";
+					"<table><tr><th>Species Name</th><th>Observed</th><th>Notes</th></tr>";
 					
 		for( var i = 1; i < lines.length; i++ ) {
 		
@@ -29,7 +29,7 @@ window.onload = function() {
 		
 			var chunks		= lines[i].split(' '),
 				bandCode 	= chunks[0],
-				count		= { total: 0, male: 0, female: 0, juvenile: 0, immature: 0 };
+				count		= { total: 0, male: 0, female: 0, juvenile: 0, immature: 0, deceased: 0, notes: "" };				
 			
 			if( !!! birdBrain[ bandCode ] ) {
 			
@@ -40,14 +40,35 @@ window.onload = function() {
 			}
 			
 			for( var ii = 1; ii < chunks.length; ii++ ) {
-				
+			
+				var	prevNote	= !! isNote ? isNote : false,
+					isNote		= false;
+			
 				if( isNaN(chunks[ii]) ) {
 
 					var chunkCount = "";
 					
 					for( var char = 0; char < chunks[ii].length; char++ ) {
 					
-						var character = chunks[ii][char];
+						// todo: account for 'mmfmfmffmj'-style notation
+					
+						var character 		= chunks[ii][char],
+							nextCharacter	= chunks[ii][char+1] ? chunks[ii][char+1] : null,
+							breakFor		= false,
+							addNotes		= function( singleCharacterChunk ) {
+						
+								if( !!singleCharacterChunk || (!!nextCharacter && isNaN(nextCharacter)) ) {
+									
+									count.notes 	+= ( count.notes && !prevNote ) ? "<br />" + chunks[ii].substring(char) + " " : chunks[ii].substring(char) + " ";
+									isNote			= true;
+									
+									return true;
+									
+								}
+								
+								return false;
+							
+							}
 						
 						if( ! isNaN(character) ) {
 						
@@ -59,6 +80,14 @@ window.onload = function() {
 							
 								case "m":
 								
+									if( addNotes() ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
+								
 									if( chunkCount )
 										count.male += parseInt( chunkCount );
 									else 
@@ -67,6 +96,14 @@ window.onload = function() {
 									break;
 									
 								case "f":
+								
+									if( addNotes() ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
 								
 									if( chunkCount )
 										count.female += parseInt( chunkCount );
@@ -77,6 +114,14 @@ window.onload = function() {
 									
 								case "j":
 								
+									if( addNotes() ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
+								
 									if( chunkCount )
 										count.juvenile += parseInt( chunkCount );
 									else
@@ -86,11 +131,49 @@ window.onload = function() {
 									
 								case "i":
 								
+									if( addNotes() ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
+								
 									if( chunkCount )
 										count.immature += parseInt( chunkCount );
 									else
 										count.immature++;
 										
+									break;
+									
+								case "d":
+								
+									// append as note for eBird as well
+									if( addNotes() ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
+								
+									if( chunkCount )
+										count.deceased += parseInt( chunkCount );
+									else
+										count.deceased++;
+										
+									break;
+									
+								default:
+								
+									if( addNotes(true) ) {
+									
+										breakFor = true;
+										
+										break;
+									
+									}
+									
 									break;
 
 							}
@@ -98,6 +181,9 @@ window.onload = function() {
 							chunkCount = "";
 						
 						}
+						
+						if( !!breakFor )
+							break;
 					
 					}
 				
@@ -109,7 +195,7 @@ window.onload = function() {
 			
 			}
 			
-			result += "<tr><td>" + birdBrain[ bandCode ].name + "</td><td>" + ( count.total + count.male + count.female+count.juvenile + count.immature ) + "</td><td>"+ ( count.female ? count.female : "-" ) +"</td><td>"+ ( count.male ? count.male : "-" ) +"</td><td>"+ ( count.immature ? count.immature : "-" ) +"</td><td>" + ( count.juvenile ? count.juvenile : "-" ) + "</td></tr>";
+			result += "<tr><td>" + birdBrain[ bandCode ].name + "</td><td><b>" + ( count.total + count.male + count.female+count.juvenile + count.immature + count.deceased ) + "</b> "+ ( count.female ? count.female + "f " : "" ) + ( count.male ? count.male + "m " : "" ) + ( count.immature ? count.immature + "imm " : "" ) + ( count.juvenile ? count.juvenile + "juv" : "" ) + ( count.deceased ? count.deceased + "dec" : "" ) + "</td><td><em>"+ count.notes + ( count.deceased ? count.deceased + " found deceased." : "" ) +"</em></td></tr>";
 				
 		
 		}
