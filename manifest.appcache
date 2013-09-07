@@ -1,0 +1,13 @@
+CACHE MANIFEST
+
+#
+# version 0.1
+#
+
+CACHE:
+index.html
+lib/birdbrain/birdbrain.js
+lagoonie.js
+
+NETWORK:
+*

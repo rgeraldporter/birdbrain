@@ -1,0 +1,134 @@
+<!DOCTYPE html5>
+<html manifest="manifest.appcache">
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+		<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+		
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    
+	    <link rel="apple-touch-icon" href="images/icon.png"/>
+		
+		<title>Lagoonie</title>
+		
+		<script type="application/javascript" src="lib/birdbrain/birdbrain.js"></script>
+		<script type="application/javascript" src="lagoonie.js"></script>
+		
+		<style>
+		
+			body {
+				
+				font-family: helvetica;
+				background-color: #efefef;
+				color: #555555;
+				
+			}
+			
+			h1 {
+				
+				font-size:  1.375em;
+				
+			}
+			
+			table {
+				
+				font-size: 0.825em;
+				
+			}
+			
+			th {
+				
+				text-align: left;
+				
+			}
+			
+			tr:nth-child(even) {
+			
+				background: #dddddd
+				
+			}
+			
+			p.lagoonie-instructions {
+				
+				font-style: italic;
+				
+			}
+			
+			p#lagoonie-footer {
+				
+				font-style: italic;
+				
+			}
+			
+			p#lagoonie-result {
+				
+				color: 			green;
+				
+			}
+			
+			#lagoonie-form {
+				
+				padding-left: 1em;
+				
+			}
+		
+			#lagoonie-form input, input#lagoonie-all {
+				
+				font-size: 1.25em;
+				width: 		13em;
+				display: 	block;
+				margin:  	0.375em;
+				padding: 	0.25em;
+				
+			}
+			
+			input[type=button] {
+			
+				background: none repeat scroll 0 0 #cccccc;
+			    border: medium none;
+			    cursor: pointer;
+			    display: inline-block;
+			    padding: 7px;
+				
+			}
+			
+			div#lagoonie-share {
+				
+				margin-left: 1em;
+				
+			}
+
+		
+		</style>
+		
+	</head>
+	
+	<body>
+	
+		<h1>Lagoonie: Convert Checklist to eBird CSV</h1>
+		
+		<p class="lagoonie-instructions">Click upload and watch it happen!</p>
+	
+		<div id="lagoonie-form">
+
+			<textarea id="lagoonie-textarea" placeholder="Paste your checklist text here"></textarea>
+			<input type="button" value="Process!" id="lagoonie-process" />
+		
+		</div>
+		
+		<p id="lagoonie-result"></p>
+		
+		<div id="lagoonie-share"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Convert your bird checklists into eBird-readable files with Lagoonie!" data-via="rgeraldporter" data-size="large" data-hashtags="birding">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div>
+		
+		<a href="https://twitter.com/rgeraldporter" class="twitter-follow-button" data-show-count="false">Follow @rgeraldporter</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		
+		<p id="lagoonie-footer">Powered by <a href="https://github.com/rgeraldporter/lagoonie-js" target="_blank">Lagoonie-js</a> by <a href="https://twitter.com/rgeraldporter" target="_blank">Rob Porter</a>. Written under the MIT License. </p>
+
+	
+	</body>
+	
+</html>
