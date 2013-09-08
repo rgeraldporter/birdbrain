@@ -2025,9 +2025,9 @@ birdBrain	= {
         "abaCode": 1
     },
     "GCFL": {
-        "name": "Great-crested Flycatcher",
-        "scientificName": "",
-        "abaCode": 0
+        "name": "Great Crested Flycatcher",
+        "scientificName": "Myiarchus crinitus",
+        "abaCode": 1
     },
     "GCKI": {
         "name": "Golden-crowned Kinglet",
