@@ -1,4 +1,4 @@
-/* original data sources: 
+/* original data sources : 
 
 - http://www.pwrc.usgs.gov/bbl/manual/speclist.cfm 
 - http://www.pwrc.usgs.gov/bbl/MANUAL/gallaou.htm
