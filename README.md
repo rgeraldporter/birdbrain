@@ -1,4 +1,4 @@
-lagoonie-js
-========
+birdbrain
+=========
 
-Converts bird banding code checklists from text to CSV format.
+Avian species data in various formats.
