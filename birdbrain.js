@@ -266,8 +266,8 @@ birdBrain	= {
     },
     "ARTE": {
         "name": "Arctic Tern",
-        "scientificName": "",
-        "abaCode": 0
+        "scientificName": "Sterna paradisaea",
+        "abaCode": 1
     },
     "ARWA": {
         "name": "Arctic Warbler",
