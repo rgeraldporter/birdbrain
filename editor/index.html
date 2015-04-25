@@ -1,0 +1,376 @@
+<!DOCTYPE html5>
+<html manifest="manifest.appcache">
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, minimal-ui" />
+		
+	    <meta name="apple-mobile-web-app-capable" content="yes" />
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	    
+	    <link rel="apple-touch-icon" href="images/icon.png"/>
+
+	    <link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/colors.css">
+		<link rel="stylesheet" href="css/app.css">
+		
+		<title>BirdBrain Editor</title>
+		
+
+		<script type="application/javascript" src="../birdbrain.js"></script>
+		
+		<style>
+
+		
+			body {
+				
+				font-family: avenir, 'avenir next', helvetica, arial, sans-serif;
+				background-color: #efefef;
+				color: #555555;
+				-moz-user-select: none; 
+				-khtml-user-select: none; 
+				-webkit-user-select: none; 
+				-o-user-select: none;
+				height: 100%; 
+				
+			}
+			
+			h1 {
+				
+				font-size:  1.375em;
+				
+			}
+			
+			table {
+				
+				font-size: 0.825em;
+				
+			}
+			
+			th {
+				
+				text-align: left;
+				
+			}
+			
+			tr:nth-child(even) {
+			
+				background: #dddddd
+				
+			}
+			
+			p#birdcheck-footer {
+				
+				font-style: italic;
+				
+			}
+			
+			p#birdcheck-result {
+				
+				color: 			green;
+				text-align: center;
+				
+			}
+			
+			#birdcheck-form {
+				
+				padding-left: 1em;
+				
+			}
+		
+			#birdcheck-form input, input#birdcheck-all {
+				
+				font-size: 1.25em;
+				width: 		13em;
+				display: 	block;
+				margin:  	0.375em;
+				padding: 	0.25em;
+				
+			}
+			
+			input[type=button] {
+			
+				background: none repeat scroll 0 0 #cccccc;
+			    border: medium none;
+			    cursor: pointer;
+			    display: inline-block;
+			    padding: 7px;
+				
+			}
+
+			input#birdcheck-add-species-input {
+
+				color: black;
+
+			}
+			
+			div#birdcheck-share {
+				
+				margin-left: 1em;
+				
+			}
+			
+			input#birdcheck-append {
+				
+				display:  none;
+				
+			}
+
+			button {
+
+				padding: 0.325em;
+				font-size: 1.25em;
+				margin: 0.2125em;
+
+			}
+
+			button.birdcheck-bird-list-btn {
+
+			}
+
+			a.bircheck-current-count {
+
+				position: absolute;
+				left: 40px;
+
+			}
+
+			ul {
+
+				-webkit-margin-before: 0em;
+				-webkit-margin-after: 0em;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+				-webkit-padding-start: 0px;
+
+			}
+
+			.btn {
+
+			    padding: 7px 13px;
+
+			}
+
+			p {
+
+			}
+
+			textarea#birdcheck-text-result {
+
+				-moz-user-select: text; 
+				-khtml-user-select: text; 
+				-webkit-user-select: text; 
+				-o-user-select: text; 
+
+			}
+
+			div#birdcheck-location {
+
+				padding: 0.325em;
+
+			}
+
+			div#birdcheck-select-letter, div#birdcheck-menu {
+
+				text-align: center;
+
+			}
+
+			div#birdcheck-select-letter a.btn {
+
+				font-size: 2em;
+				min-width: 2em;
+				text-align: center;
+				padding:  0.125em;
+				margin: 0.125em;
+
+			}
+
+			div#birdcheck-menu a.btn {
+
+				font-size: 1.5em;
+				text-align: center;
+				margin-right: 0.25em;
+				margin-left: 0.25em;
+
+			}
+
+			div#birdcheck-location {
+
+				text-align: center;
+
+
+			}
+
+			ul.birdcheck-bird-list-item {
+
+				/*border: 1px solid yellow;*/
+				text-align: center;
+				display:flex;
+				display:-webkit-flex;
+				flex-flow: row nowrap;
+				-webkit-flex-flow:row nowrap;
+				list-style:none;
+				-webkit-justify-content: flex-end;
+  				justify-content: flex-end;
+  				item-align: stretch;
+  				font-size: 0.875em;
+
+			}
+
+			ul.birdcheck-bird-list-item li.birdcheck-list-item-name {
+
+				flex: 1;
+				-webkit-flex: 1;
+
+
+			}
+
+			ul.birdcheck-bird-list-item li.birdcheck-list-item-name div,
+			ul.birdcheck-bird-list-item li.birdcheck-list-item-name span  {
+
+				text-align: left;
+				white-space: nowrap;
+				text-overflow:ellipsis;
+				overflow: hidden;
+				width: 100%;
+				
+
+			}
+
+			ul.birdcheck-bird-list-item li a.btn {
+
+				font-size: 1.875em;
+				padding: 0.125em;
+				width: 1.875em;
+				height: 1.875em;
+				text-align: center;
+				margin-left: 1px;
+				margin-right: 1px;
+				border-radius: 0;
+				flex-grow: 1;
+			}
+
+			ul.birdcheck-bird-list-item li a.btn.male,
+			ul.birdcheck-bird-list-item li a.btn.female {
+
+				min-width: 1.875em;
+
+			}
+
+			ul.birdcheck-bird-list-item li div.birdcheck-current-count {
+
+				flex: 0 3 auto;
+				-webkit-flex: 0 3 auto;
+
+			}
+
+			ul.birdcheck-bird-list-item li div.birdcheck-banding-code {
+
+				flex:  0 5 auto;
+				-webkit-flex: 0 5 auto;
+				overflow: visible;
+
+			}
+
+			div#birdcheck-add-species {
+
+				display: none;
+				text-align: center;
+
+			}
+
+			p#birdcheck-result {
+
+				-webkit-overflow-scroll:touch;
+
+			}
+
+			div.birdcheck-countbox {
+
+				font-size: 1.275em;
+				display:flex;
+				display:-webkit-flex;
+				flex-flow: row nowrap;
+				-webkit-flex-flow:row nowrap;
+
+			}
+
+			div#birdcheck-header {
+
+				position: fixed;
+				width: 100%;
+
+			}
+
+			div#birdcheck-footer {
+
+				position: fixed;
+				width: 100%;
+				bottom: 0;
+
+			}
+
+			div#birdcheck-content {
+
+				padding-top: 45px;
+				-webkit-overflow-scroll:touch;
+				padding-bottom: 45px;
+				/*position: absolute;
+				top: 45px;
+				overflow: auto;
+				height: 100%;
+				width: 100%
+				-webkit-overflow-scrolling: touch;
+				padding-bottom: 45px; */
+
+
+			}
+
+
+		</style>
+		
+	</head>
+	
+	<body class="bg-black white" id="main">
+
+		<div id="birdbrain-header" class="bg-black">
+
+			<div id="birdbrain-title">BirdBrain Database Editor</div>
+
+		</div>
+
+		<div id="birdbrain-form">
+			
+			<form>
+
+			<fieldset>
+				
+			<label>Scientific Name</label>
+			<input type="text" value="" name="sciName">
+
+			<label>Common Name</label>
+			<input type="text" value="" name="commonName">
+
+			</fieldset>
+
+			<fieldset>
+
+			<label>4-Letter Band Code</label>
+			<input type="text" value="" name="bandCode4">
+
+			<label>6-Letter Band Code</label>
+			<input type="text" value="" name="bandCode6">
+
+			</fieldset>
+
+			<button>Submit</button>
+
+
+			</form>
+		</div>
+	
+	</body>
+	
+</html>
