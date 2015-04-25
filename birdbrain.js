@@ -1,4 +1,4 @@
-/* original data sources: 
+/* original data sources : 
 
 - http://www.pwrc.usgs.gov/bbl/manual/speclist.cfm 
 - http://www.pwrc.usgs.gov/bbl/MANUAL/gallaou.htm
@@ -8,6 +8,7 @@
 */
 
 birdBrain	= {
+
     "ABDU": {
         "name": "American Black Duck",
         "scientificName": "Anas rubripes",
@@ -265,8 +266,8 @@ birdBrain	= {
     },
     "ARTE": {
         "name": "Arctic Tern",
-        "scientificName": "",
-        "abaCode": 0
+        "scientificName": "Sterna paradisaea",
+        "abaCode": 1
     },
     "ARWA": {
         "name": "Arctic Warbler",
@@ -2024,9 +2025,9 @@ birdBrain	= {
         "abaCode": 1
     },
     "GCFL": {
-        "name": "Great-crested Flycatcher",
-        "scientificName": "",
-        "abaCode": 0
+        "name": "Great Crested Flycatcher",
+        "scientificName": "Myiarchus crinitus",
+        "abaCode": 1
     },
     "GCKI": {
         "name": "Golden-crowned Kinglet",
