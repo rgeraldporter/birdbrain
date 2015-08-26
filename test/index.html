@@ -1,0 +1,41 @@
+<!DOCTYPE HTML> 
+<!-- http://code.tutsplus.com/tutorials/quick-and-easy-javascript-testing-with-assert--net-14050 -->
+<html lang="en-US"> 
+    <head> 
+
+        <meta charset="UTF-8"> 
+
+        <title>BirdBrain Test</title> 
+
+        <style> 
+            .pass:before { 
+                content: 'PASS: '; 
+                color:  green; 
+                font-weight: bold; 
+            } 
+      
+            .fail:before { 
+                content: 'FAIL: '; 
+                color: red; 
+                font-weight: bold; 
+      
+            } 
+        </style> 
+        <script src="../bower_components/requirejs/require.js"></script>
+        <script>
+            require.config({
+                waitSeconds : 2,
+                paths : {
+                    text : '../bower_components/requirejs-plugins/lib/text', //text is required
+                    json : '../bower_components/requirejs-plugins/src/json' //alias to plugin
+                }
+            });
+        </script>
+        <script src="../birdbrain.js"></script>
+    </head> 
+
+    <body> 
+          
+        <ul id="output"></ul> 
+    </body>
+</html>
